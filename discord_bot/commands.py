@@ -8,7 +8,7 @@ import time
 import math
 
 
-token = ''
+token = 'token'
 
 cert = {
     'cert'
@@ -89,7 +89,6 @@ async def help(ctx):
     embed.set_thumbnail(
         url='https://4.bp.blogspot.com/-8oy1fb-s-Js/UBZR4LbEt8I/AAAAAAAABls/OM1YpMl0XjY/s1600/vraagteken.jpg')
     embed.add_field(name='Text commands', value='!help text', inline=False)
-    embed.add_field(name='Music commands', value='!help music', inline=False)
     embed.add_field(name='Math commands', value='!help math_cmd', inline=False)
     await ctx.send(embed=embed)
 
@@ -104,19 +103,6 @@ async def text(ctx):
     embed.set_thumbnail(
         url='https://4.bp.blogspot.com/-8oy1fb-s-Js/UBZR4LbEt8I/AAAAAAAABls/OM1YpMl0XjY/s1600/vraagteken.jpg')
     embed.add_field(name='Commands', value='!server\n!server stats\n!server info_of <nickname>\n!clear <msg_amount>', inline=False)
-    await ctx.send(embed=embed)
-
-
-@help.command()
-async def music(ctx):
-    embed = discord.Embed(
-        title='Music',
-        description='Available music commands\nMusic commands can only be written in appropriate channel',
-        color=discord.Color.brand_green()
-    )
-    embed.set_thumbnail(
-        url='https://4.bp.blogspot.com/-8oy1fb-s-Js/UBZR4LbEt8I/AAAAAAAABls/OM1YpMl0XjY/s1600/vraagteken.jpg')
-    embed.add_field(name='Commands', value='None', inline=False)
     await ctx.send(embed=embed)
 
 
