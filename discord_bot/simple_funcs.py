@@ -1,6 +1,6 @@
 import discord
 
-token = 'MTAyODYwOTYzNzU4MDI3OTgzOA.GKeNrb.ZbIATbErMXLm9vv7UZNM7bSWVdUc4HjQ8RKegs'
+token = 'token'
 
 intents = discord.Intents.default()
 intents.message_content = True
