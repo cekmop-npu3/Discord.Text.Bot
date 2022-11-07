@@ -17,7 +17,7 @@ cred = credentials.Certificate(cert)
 url_link = 'link'
 url2 = {'databaseURL': url_link}
 firebase_admin.initialize_app(cred, url2)
-ref = db.reference(f"/discord")
+ref = db.reference(f"/Discord/Users/")
 
 intents = discord.Intents.default()
 intents.message_content = True
