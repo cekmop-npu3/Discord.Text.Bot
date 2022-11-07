@@ -2,6 +2,8 @@ import discord
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+import time
+import datetime
 
 token = 'token'
 
@@ -12,11 +14,37 @@ cred = credentials.Certificate(cert)
 url_link = 'link'
 url2 = {'databaseURL': url_link}
 firebase_admin.initialize_app(cred, url2)
-ref = db.reference(f"/discord")
+ref = db.reference(f"/Discord/Users/")
+ref_del = db.reference(f"/Discord/DeletedMessages/")
+ref_edit = db.reference(f"/Discord/EditedMessages/")
 
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
+
+
+@client.event
+async def on_message_delete(message):
+    ref_del.update({
+        str(int(time.time())): {
+            'Message': message.content, 'Author': str(message.author).split("#")[0],
+            'Time': str(datetime.datetime.now()), 'Channel': message.channel.name
+        }
+    })
+
+
+@client.event
+async def on_message_edit(before, after):
+    ref_edit.update({
+        str(int(time.time())): {
+            'MessageBefore': before.content,
+            'MessageAfter': after.content,
+            'Author': str(after.author).split("#")[0],
+            'Time': str(datetime.datetime.now()),
+            'Channel': after.channel.name
+        }
+    })
+
 
 
 @client.event
