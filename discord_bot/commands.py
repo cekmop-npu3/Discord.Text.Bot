@@ -3,6 +3,7 @@ from discord.ext import commands
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
+from numba import njit
 import datetime
 import time
 import math
@@ -120,6 +121,7 @@ async def math_cmd(ctx):
     await ctx.send(embed=embed)
 
 
+@njit(fastmath=true)
 @bot.command()
 async def calc(ctx, *arg):
     try:
